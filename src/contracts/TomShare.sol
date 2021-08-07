@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 contract TomShare {
     // Code goes here...
-    string public name = "TomShare";
+    string public name;
     uint256 public postCount = 0;
     mapping(uint256 => Image) public images;
 
@@ -30,13 +30,17 @@ contract TomShare {
         address payable author
     );
 
+    constructor() public {
+        name = "TomShare";
+    }
+
     function uploadImage(string memory _imgHash, string memory _caption)
         public
     {
         require(bytes(_imgHash).length > 0);
         require(bytes(_caption).length > 0);
         require(msg.sender != address(0x0));
-        postCount = postCount++;
+        postCount++;
         images[postCount] = Image(postCount, _imgHash, _caption, 0, msg.sender);
 
         emit ImageCreated(postCount, _imgHash, _caption, 0, msg.sender);
