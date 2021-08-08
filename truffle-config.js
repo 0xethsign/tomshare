@@ -13,21 +13,21 @@ module.exports = {
             network_id: "*" // Match any network id
         },
         matic: {
-            provider: () => new HDWalletProvider(mnemonic, `https://rpc.maticvigil.com/${config.PROJECT_ID}`),
+            provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.matic.today`),
             network_id: 80001,
             confirmations: 2,
             timeoutBlocks: 200,
             skipDryRun: true
         },
     },
-    contracts_directory: './src/contracts/',
+    // contracts_directory: './src/contracts/',
     contracts_build_directory: './src/abis/',
-    compilers: {
-        solc: {
-            optimizer: {
-                enabled: true,
-                runs: 200
-            }
-        }
-    }
+    // compilers: {
+    //     solc: {
+    //         optimizer: {
+    //             enabled: true,
+    //             runs: 200
+    //         }
+    //     }
+    // }
 }
